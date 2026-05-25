@@ -69,7 +69,7 @@ EXPERIMENT_NAME = "churn-radar"
 
 # Where MLflow stores its data. "mlruns/" is a local folder it creates
 # automatically. In production teams use a central server instead.
-MLFLOW_TRACKING_URI = "mlruns"
+MLFLOW_TRACKING_URI = "sqlite:///mlruns/mlflow.db"
 
 
 def evaluate_model(model, X_test: pd.DataFrame, y_test: pd.Series, model_name: str) -> dict:

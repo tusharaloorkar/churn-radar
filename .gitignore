@@ -78,6 +78,7 @@ desktop.ini
 # In a team setting, you'd point MLflow at a shared server instead.
 mlruns/
 mlflow.db
+*.db
 
 # --- Testing ---
 .pytest_cache/
