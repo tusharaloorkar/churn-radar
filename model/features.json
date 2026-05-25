@@ -1,0 +1,16 @@
+[
+  "tenure",
+  "MonthlyCharges",
+  "TotalCharges",
+  "Contract",
+  "PaymentMethod",
+  "InternetService",
+  "OnlineSecurity",
+  "TechSupport",
+  "PaperlessBilling",
+  "SeniorCitizen",
+  "Dependents",
+  "Partner",
+  "MultipleLines",
+  "PhoneService"
+]

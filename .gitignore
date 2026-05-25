@@ -72,6 +72,13 @@ model/*.h5
 Thumbs.db        # Windows
 desktop.ini
 
+# --- MLflow ---
+# mlruns/ is the local experiment database. It grows large and changes
+# every training run — not useful to version in Git.
+# In a team setting, you'd point MLflow at a shared server instead.
+mlruns/
+mlflow.db
+
 # --- Testing ---
 .pytest_cache/
 .coverage

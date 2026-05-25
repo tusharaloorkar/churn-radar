@@ -67,6 +67,15 @@ pytest==8.3.3
 # without needing a real running server. FastAPI's TestClient uses it.
 httpx==0.27.2
 
+# --- Experiment Tracking ---
+# MLflow: logs every training run automatically — parameters, metrics, and
+# the model itself. Provides a web UI to compare runs side by side.
+# This is what separates MLOps from plain ML: reproducibility + visibility.
+# [skinny] = install without heavy optional deps (pyarrow, etc.) that
+# don't build on Python 3.13 without a C compiler.
+mlflow[skinny]==3.12.0
+pyarrow==23.0.1
+
 # --- Utilities ---
 # python-multipart: required by FastAPI to handle form data in requests.
 python-multipart==0.0.12
