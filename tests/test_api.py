@@ -119,11 +119,22 @@ def client(mock_predictor):
     """
     Create a FastAPI TestClient with the mock predictor injected.
 
-    We use patch() to replace the real _predictor_instance (which requires
-    a trained model file) with our mock. This lets us test the API in
-    complete isolation from the ML model.
+    WHY TWO PATCHES?
+      Patch 1 — "app.main.initialize_predictor":
+        When TestClient(app) starts, FastAPI runs the lifespan function,
+        which calls initialize_predictor(). That function loads model files
+        from disk AND overwrites _predictor_instance with a real predictor —
+        replacing our mock. We patch it to a no-op so the mock survives.
+
+      Patch 2 — "src.predict._predictor_instance":
+        Sets the module-level singleton to our mock. get_predictor() reads
+        this variable, so every endpoint call returns our mock's predictions.
+
+    Together these two patches give us full control over what the API
+    "sees" as a model — no disk access, no real model needed in CI.
     """
-    with patch("src.predict._predictor_instance", mock_predictor):
+    with patch("app.main.initialize_predictor"), \
+         patch("src.predict._predictor_instance", mock_predictor):
         from app.main import app
         with TestClient(app) as test_client:
             yield test_client

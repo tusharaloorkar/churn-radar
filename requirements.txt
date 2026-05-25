@@ -74,7 +74,10 @@ httpx==0.27.2
 # [skinny] = install without heavy optional deps (pyarrow, etc.) that
 # don't build on Python 3.13 without a C compiler.
 mlflow[skinny]==3.12.0
-pyarrow==23.0.1
+# pyarrow: let pip pick the best pre-built wheel for the current platform.
+# Pinning an exact version risks choosing one with no wheel for the CI runner,
+# forcing a source build that fails without a C compiler.
+pyarrow>=14.0.0
 
 # --- Utilities ---
 # python-multipart: required by FastAPI to handle form data in requests.

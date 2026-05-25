@@ -118,9 +118,8 @@ class CustomerFeatures(BaseModel):
             raise ValueError(f"InternetService must be one of: {valid}. Got: '{v}'")
         return v
 
-    class Config:
-        # Show example values in the auto-generated /docs UI
-        json_schema_extra = {
+    model_config = {
+        "json_schema_extra": {
             "example": {
                 "tenure": 24,
                 "MonthlyCharges": 65.5,
@@ -138,6 +137,7 @@ class CustomerFeatures(BaseModel):
                 "PhoneService": "Yes",
             }
         }
+    }
 
 
 class PredictionResponse(BaseModel):
