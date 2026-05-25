@@ -1,0 +1,38 @@
+{
+  "model_name": "Random Forest",
+  "features": [
+    "tenure",
+    "MonthlyCharges",
+    "TotalCharges",
+    "Contract",
+    "PaymentMethod",
+    "InternetService",
+    "OnlineSecurity",
+    "TechSupport",
+    "PaperlessBilling",
+    "SeniorCitizen",
+    "Dependents",
+    "Partner",
+    "MultipleLines",
+    "PhoneService"
+  ],
+  "train_size": 5634,
+  "test_size": 1409,
+  "metrics": {
+    "accuracy": 0.77,
+    "f1": 0.6301,
+    "roc_auc": 0.8418
+  },
+  "all_models": {
+    "RandomForest": {
+      "accuracy": 0.77,
+      "f1": 0.6301,
+      "roc_auc": 0.8418
+    },
+    "XGBoost": {
+      "accuracy": 0.7651,
+      "f1": 0.6191,
+      "roc_auc": 0.8283
+    }
+  }
+}

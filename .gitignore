@@ -1,0 +1,87 @@
+# =============================================================================
+# .gitignore — Files Git Should NOT Track
+# =============================================================================
+#
+# WHAT IS .gitignore?
+#   When you run "git add .", Git adds ALL changed files to the staging area.
+#   But some files should NEVER go into your repo:
+#     - Secrets (API keys, passwords)
+#     - Local configuration (your editor settings)
+#     - Large binary files (model weights, datasets)
+#     - Generated files that can be recreated (Python bytecode, virtual envs)
+#   .gitignore tells Git to skip these completely.
+#
+# WHY NOT COMMIT THE DATASET?
+#   The Telco dataset is ~2MB. While small, best practice is to NOT commit
+#   datasets to Git. Instead, document WHERE to get it (README). Datasets
+#   can grow to GBs and Git is not designed for large binary files.
+#
+# WHY NOT COMMIT THE MODEL FILE?
+#   model/best_model.pkl is a binary file that changes every training run.
+#   Git can't meaningfully diff binary files, so each version bloats your
+#   repo history. We'll handle model versioning with DVC in Project 3.
+# =============================================================================
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# --- Virtual Environments ---
+# Never commit your venv — it's huge and OS-specific
+venv/
+env/
+.venv/
+.env/
+
+# --- Environment Variables / Secrets ---
+# CRITICAL: never commit .env files — they often contain API keys
+.env
+.env.*
+*.env
+
+# --- Jupyter Notebooks ---
+# Checkpoint files are auto-generated and don't need version control
+.ipynb_checkpoints/
+
+# --- Data ---
+# Datasets should not be committed — document where to download them
+data/raw/*.csv
+data/raw/*.zip
+data/processed/*.csv
+
+# --- ML Artifacts ---
+# Model files are large binaries — version with DVC (Project 3)
+model/*.pkl
+model/*.joblib
+model/*.pt
+model/*.h5
+
+# --- BUT keep metrics.json — it's small text, useful for comparison
+!model/metrics.json
+
+# --- IDE / Editor ---
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# --- OS Files ---
+.DS_Store        # macOS
+Thumbs.db        # Windows
+desktop.ini
+
+# --- Testing ---
+.pytest_cache/
+.coverage
+htmlcov/
+*.coverage
+
+# --- Distribution / Build ---
+dist/
+build/
+*.egg-info/

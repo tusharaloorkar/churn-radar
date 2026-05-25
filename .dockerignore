@@ -1,0 +1,51 @@
+# =============================================================================
+# .dockerignore — Files Docker Should NOT Copy Into the Image
+# =============================================================================
+#
+# WHAT IS .dockerignore?
+#   When Docker builds an image, the first thing it does is send ALL files
+#   in the current directory to the Docker daemon (the build context).
+#   .dockerignore tells Docker what to exclude from that transfer.
+#
+# WHY DOES THIS MATTER?
+#   1. SPEED: Excluding large folders (venv, data) makes builds faster
+#   2. SIZE: Smaller build context = smaller final image
+#   3. SECURITY: Don't accidentally copy .env files into the image
+#
+# Key difference from .gitignore:
+#   .gitignore controls what Git tracks.
+#   .dockerignore controls what Docker copies. Both exist in the root.
+# =============================================================================
+
+# Virtual environments (huge, OS-specific, not needed in container)
+venv/
+env/
+.venv/
+
+# Raw data (large CSV files; data is not needed inside the container
+# because the container only runs inference, not training)
+data/
+
+# Notebooks (not needed at runtime)
+notebooks/
+
+# Git history (container doesn't need version control)
+.git/
+.gitignore
+
+# Test files (not needed in production container)
+tests/
+
+# Secrets
+.env
+.env.*
+
+# Editor/OS junk
+.vscode/
+.idea/
+.DS_Store
+__pycache__/
+*.pyc
+
+# This file itself
+.dockerignore
