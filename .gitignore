@@ -55,14 +55,11 @@ data/raw/*.zip
 data/processed/*.csv
 
 # --- ML Artifacts ---
-# Model files are large binaries — version with DVC (Project 3)
-model/*.pkl
+# Committing model files so Render can load them at deploy time.
+# In Project 3 we'll replace this with DVC for proper model versioning.
 model/*.joblib
 model/*.pt
 model/*.h5
-
-# --- BUT keep metrics.json — it's small text, useful for comparison
-!model/metrics.json
 
 # --- IDE / Editor ---
 .vscode/
