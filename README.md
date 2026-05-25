@@ -24,10 +24,8 @@ This is **Project 1** of a 4-part MLOps portfolio series. The goal is to demonst
 
 ## Live Demo
 
-> **API URL:** `https://your-app-name.onrender.com`  
-> **Interactive docs:** `https://your-app-name.onrender.com/docs`
-
-*(Replace with your Render URL after deploying)*
+> **API URL:** `https://churn-radar.onrender.com`  
+> **Interactive docs:** `https://churn-radar.onrender.com/docs`
 
 ---
 
